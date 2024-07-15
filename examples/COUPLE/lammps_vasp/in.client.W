@@ -5,7 +5,7 @@ variable        mode index file
 if "${mode} == file" then &
   "message client md file tmp.couple" &
 elif "${mode} == zmq" &
-  "message client md zmq localhost:5555" &
+  "message client md zmq localhost:8888" &
 
 variable	x index 1
 variable	y index 1

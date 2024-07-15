@@ -3,8 +3,8 @@ LAMMPS (8 Feb 2019)
 
 variable        mode index file
 
-if "${mode} == file" then   "message client md file tmp.couple" elif "${mode} == zmq"   "message client md zmq localhost:80" # Note: General Web (localhost:80), Secure HTTPS (localhost:443), Develop. XAMPP (localhost:8888), Develop. Web (localhost:5555)
-message client md file tmp.couple
+if "${mode} == file" then   "message client md file tmp.couple" elif "${mode} == zmq"   "message client md zmq localhost:8888" # Note: General Web (localhost:80), Secure HTTPS (localhost:443), Develop. XAMPP (localhost:8888), Develop. Web (localhost:5555)
+message client md zmq localhost:8888
 
 variable	x index 1
 variable	y index 1
@@ -29,11 +29,62 @@ replicate       1 1 1
   orthogonal box = (0 0 0) to (7.134 7.134 7.134)
   1 by 2 by 2 MPI processor grid
   64 atoms
-  Time spent = 0.000444063 secs
+  Time spent = 0.000147532 secs
 
 mass            1 12.01
 
 velocity        all create 300.0 87287 loop geom
 
 neighbor        0.3 bin
-neig
+neigh_modify    delay 0 every 10 check no
+
+fix             1 all nve
+fix             2 all client/md
+fix_modify      2 energy yes # or 2 virial yes
+
+dump            1 all cfg 1 cfg/run.*.cfg mass type xs ys zs id type q
+dump_modify     1 element C
+
+thermo          1
+run             10
+Per MPI rank memory allocation (min/avg/max) = 3.176 | 3.176 | 3.176 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0          300            0            0   -108.98554    7186.7053 
+       1    299.74916            0            0   -108.98373     7180.701 
+       2    298.99456            0            0   -108.97827    7162.6379 
+       3      297.738            0            0   -108.96915    7132.5609 
+       4    295.98807            0            0   -108.95647    7090.6757 
+       5    293.74272            0            0   -108.94023    7036.9261 
+       6    290.99099            0            0   -108.92029    6971.0493 
+       7    287.73092            0            0   -108.89668    6893.0005 
+       8    283.96752            0            0    -108.8694    6802.8969 
+       9    279.70825            0            0   -108.83854    6700.9167 
+      10    274.96517            0            0   -108.80416     6587.349 
+Loop time of 42.0495 on 4 procs for 10 steps with 64 atoms
+
+Performance: 0.021 ns/day, 1168.042 hours/ns, 0.238 timesteps/s
+68.3% CPU use with 4 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 3.89e-07   | 4.44e-07   | 5.08e-07   |   0.0 |  0.00
+Comm    | 4.9524e-05 | 0.00016961 | 0.00021017 |   0.0 |  0.00
+Output  | 0.010936   | 0.010979   | 0.011103   |   0.1 |  0.03
+Modify  | 42.038     | 42.038     | 42.038     |   0.0 | 99.97
+Other   |            | 2.639e-05  |            |       |  0.00
+
+Nlocal:    16 ave 18 max 13 min
+Histogram: 1 0 0 0 1 0 0 0 0 2
+Nghost:    0 ave 0 max 0 min
+Histogram: 4 0 0 0 0 0 0 0 0 0
+Neighs:    0 ave 0 max 0 min
+Histogram: 4 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 0
+Ave neighs/atom = 0
+Neighbor list builds = 1
+Dangerous builds not checked
+
+Total wall time: 0:00:45

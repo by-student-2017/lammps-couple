@@ -181,7 +181,7 @@ mode = sys.argv[1]
 poscar_template = sys.argv[2]
 
 if mode == "file": cs = CSlib(1,mode,"tmp.couple",None)
-elif mode == "zmq": cs = CSlib(1,mode,"*:5555",None)
+elif mode == "zmq": cs = CSlib(1,mode,"*:8888",None)
 else:
   print("Syntax: python vasp_wrap.py file/zmq POSCARfile")
   sys.exit(1)
