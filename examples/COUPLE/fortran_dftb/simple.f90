@@ -54,7 +54,7 @@
        write(10,*)0,ly,0
        write(10,*)0,0,lz
        close(10)
-       call system("./dftb+ > dftb.out")
+       call system("dftb+ > dftb.out")
        open (unit = 10, status = 'old', file = 'results.out')
        read(10,*)etot
        read(10,*)ts_dftb

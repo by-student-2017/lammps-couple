@@ -8,7 +8,7 @@ Driver = {
 
 Hamiltonian = DFTB {
   LAMMPS = Yes # keyword to print energy, forces, and stress tensor to file(results.out)
-  SCC = No
+  SCC = Yes
   MaxAngularMomentum = {
     C = "p"
   }
@@ -18,7 +18,7 @@ Hamiltonian = DFTB {
     Temperature [Kelvin] = 298.0
   }
   SlaterKosterFiles = Type2FileNames {
-    Prefix = "~/slako/mio-1-1/" # the user must define the location of the skf files
+    Prefix = "./mio-1-1/" # the user must define the location of the skf files
     Separator = "-"
     Suffix = ".skf"
     LowerCaseTypeName = No
