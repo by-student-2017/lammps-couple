@@ -46,7 +46,8 @@
        write(10,*)nlocal,"S"
        write(10,*) "C"
        do i = 1, nlocal
-         write(10,'(2I,3F15.6)')i,1,pos(:,ids(i))
+         !write(10,'(2I,3F15.6)')i,1,pos(:,ids(i))
+         write(10,*)i,1,pos(:,ids(i))
        enddo
        write(10,*)"0.0 0.0 0.0"
        write(10,*)lx,0,0
