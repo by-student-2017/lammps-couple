@@ -5,7 +5,12 @@ variable        mode index file
 if "${mode} == file" then &
   "message client md file tmp.couple" &
 elif "${mode} == zmq" &
-  "message client md zmq localhost:8888" &
+  "message client md zmq localhost:80" &
+# Note: General Web (localhost:80), Secure HTTPS (localhost:443), Develop. XAMPP (localhost:8888), Develop. Web (localhost:5555)
+
+variable	x index 1
+variable	y index 1
+variable	z index 1
 
 units           metal
 atom_style      atomic
@@ -13,7 +18,7 @@ atom_modify     sort 0 0.0 map yes
 
 read_data data.diamond
 
-replicate       1 1 1
+replicate       $x $y $z
 
 mass            1 12.01
 

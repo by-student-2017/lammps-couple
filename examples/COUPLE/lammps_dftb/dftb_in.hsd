@@ -56,7 +56,7 @@ Hamiltonian = DFTB {
 }
 Options = {
   WriteAutotestTag = No
-  WriteDetailedOut = Yes
+  WriteDetailedOut = No
   WriteDetailedXML = No
   WriteResultsTag = Yes
   RestartFrequency = 0
