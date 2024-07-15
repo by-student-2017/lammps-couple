@@ -13,7 +13,7 @@ variable	y index 1
 variable	z index 1
 
 units           metal
-atom_style      atomic
+atom_style      charge
 atom_modify     sort 0 0.0 map yes
 
 read_data data.diamond
@@ -31,7 +31,7 @@ fix             1 all nve
 fix             2 all client/md
 fix_modify      2 energy yes
 
-dump            1 all cfg 1 cfg/run.*.cfg mass type xs ys zs id type
+dump            1 all cfg 1 cfg/run.*.cfg mass type xs ys zs id type q
 dump_modify     1 element C
 
 thermo          1
