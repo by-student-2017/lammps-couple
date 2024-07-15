@@ -37,7 +37,7 @@ using namespace CSLIB_NS;
 enum{OTHER,REAL,METAL};
 enum{SETUP=1,STEP};
 enum{DIM=1,PERIODICITY,ORIGIN,BOX,NATOMS,NTYPES,TYPES,COORDS,UNITS,CHARGE};
-enum{FORCES=1,ENERGY,PRESSURE,ERROR};
+enum{FORCES=1,ENERGY,PRESSURE,CHARGES,ERROR};
 
 /* ---------------------------------------------------------------------- */
 
@@ -386,4 +386,13 @@ void ServerMD::send_fev(int msgID)
   for (int i = 0; i < 6; i++) vall[i] *= factor;
 
   cs->pack(PRESSURE,4,6,vall);
+
+/*
+  double *charges = NULL;
+  if (atom->nlocal) {
+    charges = &atom->q[0];
+  }
+  cs->pack_parallel(CHARGES,4,atom->nlocal,atom->tag,3,charges);
+*/
+
 }

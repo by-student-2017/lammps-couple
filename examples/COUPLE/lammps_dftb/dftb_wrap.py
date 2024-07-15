@@ -46,7 +46,7 @@ vaspcmd = "dftb+"
 
 SETUP,STEP = range(1,2+1)
 DIM,PERIODICITY,ORIGIN,BOX,NATOMS,NTYPES,TYPES,COORDS,UNITS,CHARGE = range(1,10+1)
-FORCES,ENERGY,VIRIAL,ERROR = range(1,4+1)
+FORCES,ENERGY,VIRIAL,CHARGES,ERROR = range(1,5+1)
 
 # -------------------------------------
 # functions
@@ -278,7 +278,7 @@ mode = sys.argv[1]
 poscar_template = sys.argv[2]
 
 if mode == "file": cs = CSlib(1,mode,"tmp.couple",None)
-elif mode == "zmq": cs = CSlib(1,mode,"*:80",None)
+elif mode == "zmq": cs = CSlib(1,mode,"*:5555",None)
 else:
   print("Syntax: python vasp_wrap.py file/zmq POSCARfile")
   sys.exit(1)
@@ -377,19 +377,19 @@ while 1:
   
   # process VASP output
     
-  energy,forces,virial,charge = vasprun_read()
+  energy,forces,virial,charges = vasprun_read()
 
   # convert VASP kilobars to bars
 
   for i,value in enumerate(virial): virial[i] *= 1000.0
     
-  # return forces, energy, pressure to client
+  # return forces, energy, pressure, charge to client
   
-  cs.send(msgID,3);
+  cs.send(msgID,4);
   cs.pack(FORCES,4,3*natoms,forces)
   cs.pack_double(ENERGY,energy)
   cs.pack(VIRIAL,4,6,virial)
-  cs.pack(CHARGE,4,natoms,charge)
+  cs.pack(CHARGES,4,natoms,charges)
   
 # final reply to client
   

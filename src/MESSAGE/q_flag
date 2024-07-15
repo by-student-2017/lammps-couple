@@ -1,0 +1,50 @@
+fix_client_md.cpp:45:  if (!atom->map_style) error->all(FLERR,"Fix client/md requires atom map");
+fix_client_md.cpp:115:  if (3*atom->natoms > INT_MAX)
+fix_client_md.cpp:131:  if (atom->q_flag) nfields++;
+fix_client_md.cpp:142:  cs->pack_int(NATOMS,atom->natoms);
+fix_client_md.cpp:143:  cs->pack_int(NTYPES,atom->ntypes);
+fix_client_md.cpp:145:  cs->pack_parallel(TYPES,1,atom->nlocal,atom->tag,1,atom->type);
+fix_client_md.cpp:147:  cs->pack_parallel(COORDS,4,atom->nlocal,atom->tag,3,xpbc);
+fix_client_md.cpp:151:  if (atom->q_flag)
+fix_client_md.cpp:152:    cs->pack_parallel(CHARGE,4,atom->nlocal,atom->tag,1,atom->q);
+fix_client_md.cpp:197:  cs->pack_parallel(COORDS,4,atom->nlocal,atom->tag,3,xpbc);
+fix_client_md.cpp:238:  double **x = atom->x;
+fix_client_md.cpp:239:  int nlocal = atom->nlocal;
+fix_client_md.cpp:243:    maxatom = atom->nmax;
+fix_client_md.cpp:292:  double **f = atom->f;
+fix_client_md.cpp:293:  int nlocal = atom->nlocal;
+fix_client_md.cpp:294:  bigint natoms = atom->natoms;
+fix_client_md.cpp:299:    m = atom->map(id);
+server_mc.cpp:48:  if (!atom->map_style) error->all(FLERR,"Server mode requires atom map");
+server_mc.cpp:70:      cs->pack_int(1,atom->natoms);
+server_mc.cpp:80:      if (atom->nlocal) coords = &atom->x[0][0];
+server_mc.cpp:81:      cs->pack_parallel(2,4,atom->nlocal,atom->tag,3,coords);
+server_mc.cpp:87:      double **x = atom->x;
+server_mc.cpp:89:      m = atom->map(atomid);
+server_mc.cpp:90:      if (m >= 0 && m < atom->nlocal) {
+server_mc.cpp:109:      double **x = atom->x;
+server_mc.cpp:112:        m = atom->map(atomid);
+server_mc.cpp:113:        if (m >= 0 && m < atom->nlocal) {
+server_md.cpp:49:  if (!atom->map_style) error->all(FLERR,"Server md requires atom map");
+server_md.cpp:50:  if (atom->tag_enable == 0) error->all(FLERR,"Server md requires atom IDs");
+server_md.cpp:141:          if (ntypes != atom->ntypes)
+server_md.cpp:162:      if (charge && atom->q_flag == 0)
+server_md.cpp:181:      atom->nlocal = 0;
+server_md.cpp:182:      atom->nghost = 0;
+server_md.cpp:189:        atom->avec->create_atom(types[i],&coords[3*i]);
+server_md.cpp:190:        atom->tag[nlocal] = i+1;
+server_md.cpp:191:        if (charge) atom->q[nlocal] = charge[i];
+server_md.cpp:196:      MPI_Allreduce(&atom->nlocal,&ntotal,1,MPI_INT,MPI_SUM,world);
+server_md.cpp:200:      atom->map_init();
+server_md.cpp:201:      atom->map_set();
+server_md.cpp:202:      atom->natoms = natoms;
+server_md.cpp:208:        memory->create(fcopy,atom->nlocal,3,"server/md:fcopy");
+server_md.cpp:261:      double **x = atom->x;
+server_md.cpp:262:      int nlocal = atom->nlocal;
+server_md.cpp:263:      int nall = atom->natoms;
+server_md.cpp:267:        m = atom->map(id);
+server_md.cpp:353:  if (atom->nlocal) {
+server_md.cpp:354:    if (units != REAL) forces = &atom->f[0][0];
+server_md.cpp:356:      double **f = atom->f;
+server_md.cpp:357:      int nlocal = atom->nlocal;
+server_md.cpp:366:  cs->pack_parallel(FORCES,4,atom->nlocal,atom->tag,3,forces);

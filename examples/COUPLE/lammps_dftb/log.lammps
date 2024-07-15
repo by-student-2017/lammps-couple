@@ -1,0 +1,39 @@
+LAMMPS (8 Feb 2019)
+# small W unit cell for use with DFTB+
+
+variable        mode index file
+
+if "${mode} == file" then   "message client md file tmp.couple" elif "${mode} == zmq"   "message client md zmq localhost:80" # Note: General Web (localhost:80), Secure HTTPS (localhost:443), Develop. XAMPP (localhost:8888), Develop. Web (localhost:5555)
+message client md file tmp.couple
+
+variable	x index 1
+variable	y index 1
+variable	z index 1
+
+units           metal
+atom_style      charge
+atom_modify     sort 0 0.0 map yes
+
+read_data data.diamond
+  orthogonal box = (0 0 0) to (7.134 7.134 7.134)
+  1 by 2 by 2 MPI processor grid
+  reading atoms ...
+  64 atoms
+  reading velocities ...
+  64 velocities
+
+replicate       $x $y $z
+replicate       1 $y $z
+replicate       1 1 $z
+replicate       1 1 1
+  orthogonal box = (0 0 0) to (7.134 7.134 7.134)
+  1 by 2 by 2 MPI processor grid
+  64 atoms
+  Time spent = 0.000444063 secs
+
+mass            1 12.01
+
+velocity        all create 300.0 87287 loop geom
+
+neighbor        0.3 bin
+neig

@@ -44,7 +44,7 @@ vaspcmd = "touch tmp"
 
 SETUP,STEP = range(1,2+1)
 DIM,PERIODICITY,ORIGIN,BOX,NATOMS,NTYPES,TYPES,COORDS,UNITS,CHARGE = range(1,10+1)
-FORCES,ENERGY,VIRIAL,ERROR = range(1,4+1)
+FORCES,ENERGY,VIRIAL,CHARGES,ERROR = range(1,5+1)
 
 # -------------------------------------
 # functions
@@ -137,6 +137,7 @@ def vasprun_read():
 
   fout = []
   sout = []
+  qout = []
   
   varrays = root.findall('calculation/varray')
   for varray in varrays:
@@ -146,6 +147,7 @@ def vasprun_read():
         fxyz = line.text.split()
         fxyz = [float(value) for value in fxyz]
         fout += fxyz
+        qout.append(0.0)
     if varray.attrib["name"] == "stress":
       tensor = varray.findall("v")
       stensor = []
@@ -164,7 +166,7 @@ def vasprun_read():
 
   #fp.close()
   
-  return eout,fout,sout
+  return eout,fout,sout,qout
 
 # -------------------------------------
 # main program
@@ -278,7 +280,7 @@ while 1:
   
   # process VASP output
     
-  energy,forces,virial = vasprun_read()
+  energy,forces,virial,charge = vasprun_read()
 
   # convert VASP kilobars to bars
 
@@ -286,10 +288,11 @@ while 1:
     
   # return forces, energy, pressure to client
   
-  cs.send(msgID,3);
+  cs.send(msgID,4);
   cs.pack(FORCES,4,3*natoms,forces)
   cs.pack_double(ENERGY,energy)
   cs.pack(VIRIAL,4,6,virial)
+  cs.pack(CHARGES,4,natoms,charges)
   
 # final reply to client
   
