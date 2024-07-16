@@ -2,39 +2,91 @@
 Geometry = GenFormat {
 <<< "lammps.gen"
 }
-
-Driver = {
-}
-
+Driver = {}
 Hamiltonian = DFTB {
-  LAMMPS = Yes # keyword to print energy, forces, and stress tensor to file(results.out)
-  SCC = Yes
-  MaxAngularMomentum = {
-    C = "p"
-  }
-  Charge = 0.0
-  Eigensolver = Standard {}
-  Filling = Fermi {
-    Temperature [Kelvin] = 298.0
-  }
+  Scc = Yes
+  SccTolerance = 1e-5
   SlaterKosterFiles = Type2FileNames {
-    Prefix = "./mio-1-1/" # the user must define the location of the skf files
+    Prefix = "./mio-1-1/"
     Separator = "-"
     Suffix = ".skf"
-    LowerCaseTypeName = No
   }
-  KPointsAndWeights = {
-    0.0000000000000 0.0000000000000 0.0000000000000 1.00000000000000
+  MaxAngularMomentum {
+     C = "p"
   }
+  KPointsAndWeights = SuperCellFolding {
+1 0 0
+0 1 0
+0 0 1
+0.0 0.0 0.0
+  }
+  Differentiation = FiniteDiff {
+    Delta = 1.0E-2
+  }
+  #PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  #OldSKInterpolation = No
+  #RangeSeparated = None {}
+  ReadInitialCharges = No
+  InitialCharges = {}
+  EwaldParameter = 0.0
+  EwaldTolerance = 1.0E-9
+  #HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  Charge = 0.0
+  #OnSiteCorrection = {}
+  #
+  #Dispersion = TS {
+  #  Damping = 20.0
+  #  RangeSeparation = 0.94
+  #  ReferenceSet = "TS"
+  #}
+  Dispersion = SimpleDftD3 {
+    a1 = 0.5719
+    a2 = 3.6017
+    s6 = 1.0
+    s8 = 0.5883
+  }
+  #
+  Solvation = {}
+  #ThirdOrder = No
+  #ThirdOrderFull = No
+  ForceEvaluation = "Traditional"
 }
-
 Options = {
-  CalculateForces = Yes
+  WriteAutotestTag = No
   WriteDetailedOut = No
-  WriteBandOut = No
-  RandomSeed = 12345
+  WriteDetailedXML = No
+  WriteResultsTag = Yes
+  RestartFrequency = 0
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = Yes
 }
-
 ParserOptions = {
-  ParserVersion = 3
+  ParserVersion = 13
+  WriteHSDInput = Yes
+  #WriteXMLInput = No
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
 }
+#Parallel = {
+#  UseOmpThreads = Yes
+#  Groups = 1
+#}
+Analysis = {
+  CalculateForces = Yes
+  ProjectStates = {}
+  WriteEigenvectors = No
+  WriteBandOut = No
+  MullikenAnalysis = No
+  AtomResolvedEnergies = No
+}
+ExcitedState = {}
+#Reks = None {}
