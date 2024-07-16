@@ -2,6 +2,10 @@
 Lammps + DFTB+ (fortran_dftb version)
 (https://github.com/by-student-2017/lammps-couple)
 #---------------------------------------------------------------------
+## Note
+D drive = "/mnt/d". Usually "/mnt/d" => "$HOME" or "~"
+
+## Installation and compiling
 1. git clone https://github.com/by-student-2017/lammps-couple.git
 2. cd /mnt/d/lammps-couple/src
 3. make no-message
@@ -9,7 +13,9 @@ Lammps + DFTB+ (fortran_dftb version)
 5. make mode=lib mpi
 6. cd /mnt/d/lammps-couple/examples/COUPLE/fortran_dftb
 7. make
-8. ./simpleF.x
+
+## Usage
+1. ./simpleF.x
 #---------------------------------------------------------------------
 # I had to rewrite simple.f90 quite a bit. It took a lot of effort to get it to work, and it was exhausting.
 # Further improvements will be left to other users.
