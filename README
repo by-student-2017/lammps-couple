@@ -1,3 +1,13 @@
+----------------------------------------------------------------------
+COUPLE
+
+I made the following code work on ubuntu 22.04 LTS (lammps_dftb may also work on 24.04 LTS depending on the python2 environment). The version of DFTB+ used is 23.1.
+
+lammps_dftb: We have improved the "atomic_style" to use "charge" in anticipation of use in battery materials. It is not difficult to create the input file using Ovito.
+
+fortran_dftb: This example code only allows one atomic species, so "simple.f90" will need to be modified for more complex structures.
+
+----------------------------------------------------------------------
 This is the LAMMPS software package.
 
 LAMMPS stands for Large-scale Atomic/Molecular Massively Parallel
