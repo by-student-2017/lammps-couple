@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
 COUPLE
 
-I made the following code work on ubuntu 22.04 LTS (lammps_dftb may also work on 24.04 LTS depending on the python2 environment). The version of DFTB+ used is 23.1.
+I made the following code work on ubuntu 22.04 LTS (lammps_dftb may also work on 24.04 LTS depending on the python2 environment). The version of DFTB+ used is 23.1. These utilize file input and output.
 
 lammps_dftb: We have improved the "atomic_style" to use "charge" in anticipation of use in battery materials. It is not difficult to create the input file using Ovito.
 
