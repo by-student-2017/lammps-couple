@@ -39,12 +39,14 @@ D drive = "/mnt/d". Usually "/mnt/d" => "$HOME" or "~"
 ## Usage (No ZMQ) (Plane wave)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_nwchem/planewave
 2. mkdir cfg
-3. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode file -in in.client.W & python2 ./../nwchem_wrap.py file pw w.nw
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode file -in in.client.W & python2 ./../nwchem_wrap.py file pw w.nw
 
 ## Usage (No ZMQ) (Atomic orbital basis)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_nwchem/ao_basis
 2. mkdir cfg
-3. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode file -in in.client.h2o & python2 ./../nwchem_wrap.py file ao h2o.nw
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode file -in in.client.h2o & python2 ./../nwchem_wrap.py file ao h2o.nw
 #------------------------------------------
 
 ## Use ZMQ
@@ -73,12 +75,14 @@ D drive = "/mnt/d". Usually "/mnt/d" => "$HOME" or "~"
 ## Usage (with ZMQ) (Plane wave)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_nwchem/planewave
 2. mkdir cfg
-3. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq -in in.client.W & python2 ./../nwchem_wrap.py zmq pw w.nw
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq -in in.client.W & python2 ./../nwchem_wrap.py zmq pw w.nw
 
 ## Usage (with ZMQ) (Atomic orbital basis)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_nwchem/ao_basis
 2. mkdir cfg
-3. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq -in in.client.h2o & python2 ./../nwchem_wrap.py zmq ao h2o.nw
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 1 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq -in in.client.h2o & python2 ./../nwchem_wrap.py zmq ao h2o.nw
 #------------------------------------------
 
 ## PC specifications used for DFTB+ v.23.1 calculations
