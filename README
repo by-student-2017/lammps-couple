@@ -13,6 +13,8 @@ Although it depends on the GPU and environment, OpenMP may perform faster calcul
 
 Note: version older than stable_23Jun2022 (The reason is "enhancements and additions for the MDI package. This obsoletes the MESSAGE package.")
 
+Note: https://github.com/lammps/lammps/releases/tag/stable_29Sep2021
+
 ----------------------------------------------------------------------
 This is the LAMMPS software package.
 
