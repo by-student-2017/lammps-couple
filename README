@@ -7,6 +7,8 @@ lammps_dftb: We have improved the "atomic_style" to use "charge" in anticipation
 
 fortran_dftb: This example code only allows one atomic species, so "simple.f90" will need to be modified for more complex structures.
 
+lammps_nwchem: We have improved the "atomic_style" to use "charge" in anticipation of use in battery materials. Change the "lammps_nwchem" from lammps-29Oct20 (lammps-29Oct2020.tar.gz).
+
 Although it depends on the GPU and environment, OpenMP may perform faster calculations. Therefore, it is a good idea to consider using DFTBP (https://github.com/by-student-2017/DFTBP).
 
 ----------------------------------------------------------------------
