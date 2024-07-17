@@ -32,7 +32,8 @@ D drive = "/mnt/d". Usually "/mnt/d" => "$HOME" or "~"
 ## Usage (No ZMQ)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_dftb
 2. mkdir cfg
-3. mpirun -np 4 /mnt/d/lammps-couple/src/lmp_mpi -v mode file < in.client.lmp & python2 dftb_wrap.py file POSCAR
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 4 /mnt/d/lammps-couple/src/lmp_mpi -v mode file < in.client.lmp & python2 dftb_wrap.py file POSCAR
 #------------------------------------------
 
 ## Use ZMQ
@@ -61,7 +62,8 @@ D drive = "/mnt/d". Usually "/mnt/d" => "$HOME" or "~"
 ## Usage (with ZMQ)
 1. cd /mnt/d/lammps-couple/examples/COUPLE/lammps_dftb
 2. mkdir cfg
-3. mpirun -np 4 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq < in.client.lmp & python2 dftb_wrap.py zmq POSCAR
+3. export OMP_NUM_THREADS=1
+4. mpirun -np 4 /mnt/d/lammps-couple/src/lmp_mpi -v mode zmq < in.client.lmp & python2 dftb_wrap.py zmq POSCAR
 #------------------------------------------
 
 ## Benchmark
