@@ -11,7 +11,7 @@ lammps_nwchem: We have improved the "atomic_style" to use "charge" in anticipati
 
 Although it depends on the GPU and environment, OpenMP may perform faster calculations. Therefore, it is a good idea to consider using DFTBP (https://github.com/by-student-2017/DFTBP).
 
-Note: version older than stable_23Jun2022 (enhancements and additions for the MDI package. This obsoletes the MESSAGE package.)
+Note: version older than stable_23Jun2022 (The reason is "enhancements and additions for the MDI package. This obsoletes the MESSAGE package.")
 
 ----------------------------------------------------------------------
 This is the LAMMPS software package.
