@@ -32,7 +32,7 @@ fix             2 all client/md
 fix_modify      2 energy yes
 
 dump            d1 all cfg 1 cfg/run.*.cfg mass type xs ys zs id type q
-dump_modify     d1 element C
+dump_modify     d1 element W
 
 thermo          1
 run             10
