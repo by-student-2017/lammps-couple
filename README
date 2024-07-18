@@ -15,6 +15,8 @@ Note: version older than stable_23Jun2022 (The reason is "enhancements and addit
 
 Note: https://github.com/lammps/lammps/releases/tag/stable_29Sep2021 (The most stable version where messages are available)
 
+Note: (modified) lammps-couple/src/MESSAGE (fix_client_md.cpp:Line 36 & void FixClientMD::receive_fev(int vflag), and server_md.cpp:Line 40)
+
 ----------------------------------------------------------------------
 This is the LAMMPS software package.
 
