@@ -387,7 +387,7 @@ while 1:
 
   # convert VASP kilobars to bars
 
-  for i,value in enumerate(virial): virial[i] *= 100.0*1000.0 # Pa to bars (1 bar = 0.1 MPa = 100 kPa)
+  for i,value in enumerate(virial): virial[i] *= 1.0/(100.0*1000.0) # Pa to bars (1 bar = 0.1 MPa = 100 kPa)
     
   # return forces, energy, pressure, charge to client
   
